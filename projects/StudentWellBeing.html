@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentWellBeing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="project-style.css">
+    <link rel="stylesheet" href="../style.css">
+  
+</head>
+<body>
+    <canvas class="particles-bg" id="particlesCanvas"></canvas>
+    
+    <header class="site-header">
+        <div class="header-content">
+            <nav>
+                <ul class="nav-menu">
+                  <li><a href="../index.html" class="nav-btn">Home</a></li>
+                  <li><a href="../about.html" class="nav-btn active">About</a></li>
+                  <li><a href="../projects.html" class="nav-btn">Projects</a></li>
+                  <li><a href="../blogs.html" class="nav-btn">Blogs</a></li>
+                </ul>
+              </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="container">
+            <a href="../projects.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+
+            <div class="project-hero">
+                <div class="project-header">
+                    <div class="project-badges">
+                        <span class="badge badge-featured">⭐ FEATURED</span>
+                        <span class="badge badge-completed">✓ COMPLETED</span>
+                    </div>
+                    <h1>Student Wellbeing Data Analysis	</h1>
+                    <p class="project-subtitle">
+                        We did an in-depth analysis of student issues. 
+                    </p>
+                </div>
+
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>
+                        Incorporated Python libraries (NumPy, pandas, matplotlib, seaborn) to identify key issues students face in different districts and to understand student groups based on ethnic and social conditions.
+                    </p>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+
+                <div class="project-image-main">
+                    <img src="https://via.placeholder.com/900x400" alt="Project Screenshot">
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h2>Overview</h2>
+                <p>
+                    Incorporated Python libraries (NumPy, pandas, matplotlib, seaborn) to identify key issues students face in different districts and to understand student groups based on ethnic and social conditions.
+                </p>
+
+                <h3> Key Functionalities & Features</h3>
+      <ul>
+        <li><strong>Logging:</strong> global logging for progress and error capture using try/except patterns.</li>
+        <li><strong>File Handling:</strong> CSV and Pickle support via CSVHandler and PickleHandler.</li>
+        <li><strong>Querying:</strong> boolean indexing for complex conditions.</li>
+        <li><strong>Data Calculation:</strong> descriptive stats, joint/conditional probability functions, vector ops.</li>
+        <li><strong>Visualization:</strong> histograms, violin, box, scatter; saving images to <code>Output/visualizations/</code>.</li>
+        <li><strong>Export:</strong> export to CSV/PKL and save plots.</li>
+        <li><strong>Config Management:</strong> central config in <code>Config.py</code>.</li>
+      </ul>
+
+      <h3>Module Communication Flow & Module Outline</h3>
+      <p>High-level overview of modules, responsibilities, and flow between components.</p>
+      <ul>
+        <li><strong>Config.py</strong>: Holds common configuration constants and global settings.</li>
+        <li><strong>main.py</strong>: Entry point; orchestrates flow between modules and handles data processing, visualization, export.</li>
+        <li><strong>LoggingModule.py</strong>: Utilities for logging progress and handling errors.</li>
+      </ul>
+      <p>Supporting directories:</p>
+      <ul>
+        <li><strong>modules/</strong> — DataHandler, FileHandler, StatisticsHandler, etc.</li>
+        <li><strong>utilities/</strong> — ExportModule, VisualizationModule.</li>
+        <li><strong>Input/</strong> &amp; <strong>Output/</strong> — input data and exported results.</li>
+      </ul>
+
+                <h3>Technical Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">MNE</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">Matplotlib</span>
+                </div>
+
+               
+                <h3>Screenshots & Demo</h3>
+                <div class="image-gallery">
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/250x200" alt="Dashboard">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/250x200" alt="Detection">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://via.placeholder.com/250x200" alt="Alerts">
+                    </div>
+                </div>
+                
+                <h3>Source and repo:</h3>
+                <ul>
+                  <li><a class="btn" href="https://catalog.data.gov/dataset/school-attendance-by-student-group-and-district-2021-2022" target="_blank">Data Source</a></li>
+                  <li><a class="btn" href="https://github.com/sofiaade/CS340_-S24-_-ByteBee-" target="_blank">GitHub</a></li>
+                </ul>
+            
+    <footer>
+
+        <p><strong>Author:</strong> Sofiat Adeyemi, Sarseej Shrestha, Jayden Stewart </p>
+
+        <div class="footer-container">
+            <button class="send-message-btn" onclick="openContactForm()">
+                <i class="fas fa-paper-plane"></i>
+                <span>Send a Message</span>
+             </button>
+
+              <div class="social-links">
+                <a href="https://github.com/sofiaade" class = "social-btn" target="_blank">
+                  <i class="fab fa-github"></i>
+                  <span> GitHub </span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/sofiat-adeyemi-9b7464219/" class = "social-btn"  target="_blank">
+                  <i class="fab fa-linkedin"></i>
+                  <span> LinkedIn </span>
+                </a>
+
+                <a href="mailto:sofiatadeyemi78@gmail.com" class = "social-btn" >
+                  <i class="fas fa-envelope"></i>
+                  <span> Email </span>
+                </a>
+              </div>
+
+            <div class="container">
+                <p>&copy; 2025 Sofia Adeyemi</p>
+            </div>
+        </div>
+    </footer>
+   
+   <!-- Contact Form Modal -->
+   <div class="modal-overlay" id="contactModal" onclick="closeModalOnOutsideClick(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2 class="modal-title">Get in Touch</h2>
+            <button class="close-btn" onclick="closeContactForm()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <form id="contactForm" action="https://formspree.io/f/mldadgae" method="POST">
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input 
+                    type="text" 
+                    class="form-input" 
+                    name="name"
+                    placeholder="Enter your name" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    class="form-input" 
+                    name="email"
+                    placeholder="Enter your email" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea 
+                    class="form-textarea" 
+                    name="message"
+                    placeholder="Write your message here" 
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span>Send Message</span>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+
+            <div class="success-message" id="successMessage">
+                ✓ Message sent successfully!
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openContactForm() {
+        document.getElementById('contactModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeContactForm() {
+        document.getElementById('contactModal').classList.remove('active');
+        document.body.style.overflow = '';
+        document.getElementById('contactForm').reset();
+        document.getElementById('successMessage').classList.remove('show');
+    }
+
+    function closeModalOnOutsideClick(event) {
+        if (event.target.id === 'contactModal') {
+            closeContactForm();
+        }
+    }
+
+    // Handle form submission with Formspree
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Show success message
+                successMessage.classList.add('show');
+                form.reset();
+                
+                // Close modal after 2 seconds
+                setTimeout(() => {
+                    closeContactForm();
+                }, 2000);
+            } else {
+                alert('Oops! There was a problem sending your message. Please try again.');
+            }
+        } catch (error) {
+            alert('Oops! There was a problem sending your message. Please try again.');
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeContactForm();
+        }
+    });
+</script>
+
+    <script>
+        // Star field animation
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        const starCount = 200;
+        
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.z = Math.random() * canvas.width;
+                this.radius = Math.random() * 1.5 + 0.5;
+                this.speed = Math.random() * 0.5 + 0.2;
+            }
+            
+            update() {
+                this.z -= this.speed;
+                if (this.z <= 0) {
+                    this.z = canvas.width;
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                }
+            }
+            
+            draw() {
+                const x = (this.x - canvas.width / 2) * (canvas.width / this.z);
+                const y = (this.y - canvas.height / 2) * (canvas.width / this.z);
+                const s = this.radius * (canvas.width / this.z);
+                
+                const screenX = x + canvas.width / 2;
+                const screenY = y + canvas.height / 2;
+                
+                if (screenX < 0 || screenX > canvas.width || screenY < 0 || screenY > canvas.height) {
+                    return;
+                }
+                
+                const opacity = 1 - this.z / canvas.width;
+                
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, s, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                ctx.fill();
+                
+                if (opacity > 0.7) {
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+        }
+        
+        for (let i = 0; i < starCount; i++) {
+            stars.push(new Star());
+        }
+        
+        function animate() {
+            ctx.fillStyle = 'rgba(30, 27, 75, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Dynamic greeting based on time
+        const greetings = ['Hello', 'Hi', 'Hey', 'Greetings', 'Welcome'];
+        const hour = new Date().getHours();
+        let greeting = 'Hello';
+        
+        if (hour < 12) greeting = 'Good morning';
+        else if (hour < 18) greeting = 'Good afternoon';
+        else greeting = 'Good evening';
+        
+        document.getElementById('hello-message').textContent = greeting;
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section, .homepage-container');
+            const navLinks = document.querySelectorAll('.nav-btn');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>

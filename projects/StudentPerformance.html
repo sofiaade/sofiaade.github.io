@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="project-style.css">
+    <link rel="stylesheet" href="../style.css">
+    
+</head>
+<body>
+    <canvas class="particles-bg" id="particlesCanvas"></canvas>
+    
+    <header class="site-header">
+        <div class="header-content">
+            <nav>
+                <ul class="nav-menu">
+                  <li><a href="../index.html" class="nav-btn">Home</a></li>
+                  <li><a href="../about.html" class="nav-btn active">About</a></li>
+                  <li><a href="../projects.html" class="nav-btn">Projects</a></li>
+                  <li><a href="../blogs.html" class="nav-btn">Blogs</a></li>
+                </ul>
+              </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="../projects.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Projects
+            </a>
+
+            <div class="project-hero">
+                <div class="project-header">
+                    <div class="project-badges">
+                        <span class="badge badge-featured">⭐ FEATURED</span>
+                        <span class="badge badge-completed">✓ COMPLETED</span>
+                    </div>
+                    <h1>Predicting Student Performance with Julia	</h1>
+                    <p class="project-subtitle">
+                        We did an in-depth analysis of student issues. 
+                    </p>
+                </div>
+
+                <div class="project-overview">
+                    <h2>Project Overview</h2>
+                    <p>
+                        We built a predictive analytics web application using Python and Julia for the Backend and React and Typescript for the Frontend.
+                    </p>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+
+                <div class="project-image-main">
+                    <img src="../images/student-predictor-screenshots/1.png" alt="Project Screenshot">
+                </div>
+            </div>
+
+            <div class="project-content">
+                <h2>Overview</h2>
+                <p>
+                    We built a predictive analytics web application using Python and Julia for the Backend and React and Typescript for the Frontend.
+                    The app will allow users to upload a CSV dataset, provide a choice of predictive models then train the selected model on the dataset, display evaluation metrics, and visualize the results with interactive plots, showing trends and predictions. 
+                    This project showcases Julia’s strength in both data science and web development by combining machine learning, visualization and an accessible web interface
+                </p>
+
+                <h3>Problem and Motivation</h3>
+                 <p>
+                     Schools collect a lot of student data — attendance, homework completion, test scores, and more — but it’s often underused. This makes it difficult to identify students at risk of failing or dropping out.
+                 </p>
+                <p>
+                     <strong>Our Solution:</strong> Build a simple, user-friendly web app to upload student data and get predictions.
+                </p>
+                 <p>
+                     <strong>Impact:</strong> Flag at-risk students for timely support so that both teachers and students can intervene early with strategies.
+                 </p>
+  
+                 <h3>Project Description</h3>
+                 <p>
+                   We built a <strong>predictive analytics web application</strong> using:
+                 </p>
+                 <ul>
+                   <li><strong>Backend:</strong> Python & Julia</li>
+                   <li><strong>Frontend:</strong> React & TypeScript</li>
+                 </ul>
+                 <p>
+                   The app allows users to upload a CSV dataset, choose a predictive model, train it, display evaluation metrics, and visualize results interactively.
+                 </p>
+                 <p>
+                   This project showcases Julia’s strength in data science and web development by combining machine learning, visualization, and an accessible interface.
+                 </p>
+                 
+                 <h3>Methodology</h3>
+    <ol>
+      <li><strong>Data Collection</strong><br>
+        Gathered student performance datasets (CSV format).  
+        Attributes: student_id , <code>attendance_rate</code>, <code>test_score</code>, <code>homework_completion</code>, <code>at_risk</code>.
+      </li><br>
+
+      <li><strong>Data Preprocessing (Python & Pandas)</strong><br>
+        Loaded data, dropped missing or invalid rows, validated required columns, and separated features (<code>X</code>) and target (<code>y</code>).
+      </li><br>
+
+      <li><strong>Model Development (Python – scikit-learn)</strong><br>
+        Implemented:
+        <ul>
+          <li>Logistic Regression — binary classification</li>
+          <li>Decision Tree Classifier — interpretable model</li>
+          <li>Linear Regression — continuous prediction</li>
+        </ul>
+        Used <code>train_test_split</code> and 5-fold cross-validation for reliability.
+      </li><br>
+
+      <li><strong>Model Evaluation</strong><br>
+        Metrics:
+        <ul>
+          <li>Accuracy, Precision, Recall, F1-Score (classification)</li>
+          <li>MSE, RMSE, MAE, R² (regression)</li>
+        </ul>
+        Generated confusion matrices and distribution plots.
+      </li><br>
+
+      <li><strong>Visualization (Matplotlib & Seaborn)</strong><br>
+        Created heatmaps and actual vs. predicted plots.  
+        Converted plots to base64 for web display.
+      </li><br>
+
+      <li><strong>Web Server Integration (Julia – server.jl)</strong><br>
+        Used <strong>Genie.jl</strong> / <strong>HTTP.jl</strong> for backend routes.  
+        Accepted CSV uploads, called Python scripts (<code>ml_models.py</code>), and returned predictions, metrics, and plots.
+      </li><br>
+
+      <li><strong>Frontend Development (React – App.tsx)</strong><br>
+        Built upload interface for CSV files.  
+        Displayed metrics, risk categories, and charts dynamically.
+      </li><br>
+
+      <li><strong>Testing & Validation</strong><br>
+        Tested multiple student datasets, verified accuracy, visualization, and upload reliability.
+      </li><br>
+
+      <li><strong>Deployment</strong><br>
+        Deployed backend (Julia + Python).  
+        Connected frontend (React/Vite) to backend API at <code>localhost:8000</code>.  
+        Ensured full integration.
+      </li>
+    </ol>
+
+
+                <h3>Technical Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Julia</span>
+                    <span class="tech-tag">Typescript</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">NumPy</span>
+                </div>
+
+               
+                <h3>Screenshots & Demo</h3>
+                <div class="image-gallery">
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/1.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/2.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/3.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/4.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/5.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/6.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/7.png">
+                    </div>
+                     <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/8.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/9.png">
+                        </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/10.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/11.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/12.png">
+                    </div>
+                    <div class="gallery-image">
+                       <img src="../images/student-predictor-screenshots/13.png">
+                    </div>
+                    <div class="gallery-image">
+                       <img src="../images/student-predictor-screenshots/14.png">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="../images/student-predictor-screenshots/15.png">
+                     </div>
+                </div>
+
+    <footer>
+       
+      <p><strong>Author:</strong> Sofiat Adeyemi - BackEnd, Terri CrawFord and Areeba Ahmed - Front End </p>
+
+      <div class="footer-container">
+        <button class="send-message-btn" onclick="openContactForm()">
+            <i class="fas fa-paper-plane"></i>
+            <span>Send a Message</span>
+         </button>
+
+          <div class="social-links">
+            <a href="https://github.com/sofiaade" class = "social-btn" target="_blank">
+              <i class="fab fa-github"></i>
+              <span> GitHub </span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/sofiat-adeyemi-9b7464219/" class = "social-btn"  target="_blank">
+              <i class="fab fa-linkedin"></i>
+              <span> LinkedIn </span>
+            </a>
+
+            <a href="mailto:sofiatadeyemi78@gmail.com" class = "social-btn" >
+              <i class="fas fa-envelope"></i>
+              <span> Email </span>
+            </a>
+          </div>
+
+        <div class="container">
+            <p>&copy; 2025 Sofia Adeyemi</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Contact Form Modal -->
+<div class="modal-overlay" id="contactModal" onclick="closeModalOnOutsideClick(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+    <div class="modal-header">
+        <h2 class="modal-title">Get in Touch</h2>
+        <button class="close-btn" onclick="closeContactForm()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <form id="contactForm" action="https://formspree.io/f/mldadgae" method="POST">
+        <div class="form-group">
+            <label class="form-label">Name</label>
+            <input 
+                type="text" 
+                class="form-input" 
+                name="name"
+                placeholder="Enter your name" 
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Email</label>
+            <input 
+                type="email" 
+                class="form-input" 
+                name="email"
+                placeholder="Enter your email" 
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea 
+                class="form-textarea" 
+                name="message"
+                placeholder="Write your message here" 
+                required
+            ></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+            <span>Send Message</span>
+            <i class="fas fa-paper-plane"></i>
+        </button>
+
+        <div class="success-message" id="successMessage">
+            ✓ Message sent successfully!
+        </div>
+    </form>
+</div>
+</div>
+
+<script>
+function openContactForm() {
+    document.getElementById('contactModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeContactForm() {
+    document.getElementById('contactModal').classList.remove('active');
+    document.body.style.overflow = '';
+    document.getElementById('contactForm').reset();
+    document.getElementById('successMessage').classList.remove('show');
+}
+
+function closeModalOnOutsideClick(event) {
+    if (event.target.id === 'contactModal') {
+        closeContactForm();
+    }
+}
+
+// Handle form submission with Formspree
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const successMessage = document.getElementById('successMessage');
+
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Disable submit button
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Sending...</span>';
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Show success message
+            successMessage.classList.add('show');
+            form.reset();
+            
+            // Close modal after 2 seconds
+            setTimeout(() => {
+                closeContactForm();
+            }, 2000);
+        } else {
+            alert('Oops! There was a problem sending your message. Please try again.');
+        }
+    } catch (error) {
+        alert('Oops! There was a problem sending your message. Please try again.');
+    } finally {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeContactForm();
+    }
+});
+</script>
+
+<script>
+    // Star field animation
+    const canvas = document.getElementById('particlesCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+    const starCount = 200;
+    
+    class Star {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.z = Math.random() * canvas.width;
+            this.radius = Math.random() * 1.5 + 0.5;
+            this.speed = Math.random() * 0.5 + 0.2;
+        }
+        
+        update() {
+            this.z -= this.speed;
+            if (this.z <= 0) {
+                this.z = canvas.width;
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+            }
+        }
+        
+        draw() {
+            const x = (this.x - canvas.width / 2) * (canvas.width / this.z);
+            const y = (this.y - canvas.height / 2) * (canvas.width / this.z);
+            const s = this.radius * (canvas.width / this.z);
+            
+            const screenX = x + canvas.width / 2;
+            const screenY = y + canvas.height / 2;
+            
+            if (screenX < 0 || screenX > canvas.width || screenY < 0 || screenY > canvas.height) {
+                return;
+            }
+            
+            const opacity = 1 - this.z / canvas.width;
+            
+            ctx.beginPath();
+            ctx.arc(screenX, screenY, s, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.fill();
+            
+            if (opacity > 0.7) {
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+    }
+    
+    for (let i = 0; i < starCount; i++) {
+        stars.push(new Star());
+    }
+    
+    function animate() {
+        ctx.fillStyle = 'rgba(30, 27, 75, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        stars.forEach(star => {
+            star.update();
+            star.draw();
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    // Dynamic greeting based on time
+    const greetings = ['Hello', 'Hi', 'Hey', 'Greetings', 'Welcome'];
+    const hour = new Date().getHours();
+    let greeting = 'Hello';
+    
+    if (hour < 12) greeting = 'Good morning';
+    else if (hour < 18) greeting = 'Good afternoon';
+    else greeting = 'Good evening';
+    
+    document.getElementById('hello-message').textContent = greeting;
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Active nav link on scroll
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section, .homepage-container');
+        const navLinks = document.querySelectorAll('.nav-btn');
+        
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 200) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>

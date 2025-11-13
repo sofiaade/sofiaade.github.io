@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookManagement</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="project-style.css">
+  <link rel="stylesheet" href="../style.css">
+  
+  <style>
+    /* Project Page Layout */
+    .project-page {
+      max-width: 950px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+      color: #e5e7eb;
+      line-height: 1.8;
+    }
+
+    .project-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .project-header h1 {
+      font-size: 2.3rem;
+      background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .project-header .emoji {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .project-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 4rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-section h2 {
+      color: #a5b4fc;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #6366f1;
+      padding-left: 0.75rem;
+    }
+
+    .project-section p,
+    .project-section li {
+      color: #d1d5db;
+      font-size: 1rem;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    table th, table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    table th {
+      text-align: left;
+      color: #a5b4fc;
+    }
+
+    table tr:last-child td {
+      border-bottom: none;
+    }
+
+ 
+  </style>
+</head>
+
+<body>
+    <canvas class="particles-bg" id="particlesCanvas"></canvas>
+    <header class="site-header">
+        <div class="header-content">
+            <nav>
+                <ul class="nav-menu">
+                  <li><a href="../index.html" class="nav-btn">Home</a></li>
+                  <li><a href="../about.html" class="nav-btn active">About</a></li>
+                  <li><a href="../projects.html" class="nav-btn">Projects</a></li>
+                  <li><a href="../blogs.html" class="nav-btn">Blogs</a></li>
+                </ul>
+              </nav>
+        </div>
+    </header>
+
+
+    <div class="container">
+        <section class="project-header">
+            <h1> BookManagement Database System</h1>
+            <p><strong>Project Overview</strong></p>
+            <p>
+                Using SQL, we developed a database model for an online bookstore that allows users to browse, purchase, and review books. 
+                Our project is an Online Bookstore named BookManagement that allows users to browse, purchase, and review books. The system will support multiple categories, including fiction, non-fiction, academic books, and e-books. Customers can create accounts, track their orders, and receive book recommendations based on their purchase history.   
+            </p>
+
+            <div class="project-links">
+                <a href="https://github.com/sofiaade/CMPS_439_SQL_PROJECT" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                </a>
+            </div>
+
+        </div>
+
+        
+        <div class="content">
+            <section class="project-section">
+                <h2> Features</h2>
+                <ul>
+                    <li>At least 6 relational tables with over 20 attributes total</li>
+                    <li>Includes 1:1, 1:N, and M:N (via weak/ternary) relationships</li>
+                    <li>Uses structural constraints like (0,N) and (1,1)</li>
+                    <li>Views for reporting and analytics</li>
+                    <li>Triggers for automatic enforcement</li>
+                    <li>Check constraints and defaults for data integrity</li>
+                </ul>
+            </section>
+
+            <section class="project-section">
+                <h2> Business Operations </h2>
+                <ul> 
+            <li> Book Browsing & Searching – Users can search for books by title, author, genre, or ISBN. </li>
+            <li> Order Processing – Customers can add books to their cart and complete purchases. </li>
+            <li> User Management – Customers can create accounts, save preferences, and track orders. </li>
+            <li> Inventory Management – The system updates stock levels when books are sold. </li>
+            <li> Payment Processing – Secure online payments through credit cards, PayPal, etc. </li>
+            </ul>
+            </section>
+            
+            <section class="project-section">
+                <h2> Business Requirements </h2>
+                <ul>
+                    <li> The system must store book details (title, author, genre, price, stock quantity). </li>
+                    <li>Customers should be able to create accounts and track their purchase history.</li>
+                     <li>Payments must be securely processed and linked to orders.</li>
+                     <li>The inventory should be automatically updated after each sale.</li>
+                     <li>The system should generate sales reports for analysis.</li>
+                </ul>
+
+            </section>
+            <section class="project-section">
+                <h2> Technologies Used</h2>
+                <ul>
+                    <li> SQL Server (T-SQL) </li>
+                    <li> SSMS </li>
+                    <li> Azure Data Studio </li>
+                    <li> Excel </li>
+                </ul>
+            </section>
+            
+            <section class="project-section">
+                <h2> Table Overview</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Table</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Books</code></td>
+                            <td>Book inventory with title, genre, ISBN</td>
+                        </tr>
+                        <tr>
+                            <td><code>Customer</code></td>
+                            <td>Buyer info with 1:1 <code>CustomerProfile</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>Orders</code></td>
+                            <td>Order header, customer and date info</td>
+                        </tr>
+                        <tr>
+                            <td><code>OrderDetails</code></td>
+                            <td>Line items of each order (1:N relation)</td>
+                        </tr>
+                        <tr>
+                            <td><code>Payments</code></td>
+                            <td>Payment records for orders</td>
+                        </tr>
+                        <tr>
+                            <td><code>Reviews</code></td>
+                            <td>Customer reviews for books</td>
+                        </tr>
+                        <tr>
+                            <td><code>Publisher</code></td>
+                            <td>Publisher contact information</td>
+                        </tr>
+                        <tr>
+                            <td><code>BookEdition</code></td>
+                            <td>Weak entity for editions of books</td>
+                        </tr>
+                        <tr>
+                            <td><code>BookPromotion</code></td>
+                            <td>Ternary relationship (Book-Customer-Publisher)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section class="project-section">
+                <h2>Views</h2>
+                <ul>
+                    <li><code>TopRatedBooks</code> — Average rating of books</li>
+                    <li><code>RecentOrders</code> — Orders placed in last 30 days</li>
+                    <li><code>LowStockBooks</code> — Books with fewer than 10 units in stock</li>
+                    <li><code>CustomerPurchaseSummary</code> — Spending per customer</li>
+                    <li><code>BookPromotions</code> — Promotions via ternary relationship</li>
+                    <li><code>MostPurchasedBooks</code>, <code>vw_BooksNeverReviewed</code>, and more</li>
+                </ul>
+            </section>
+            
+            <section class="project-section">
+                <h2> Triggers</h2>
+                <ul>
+                    <li>Automatically update book stock on order</li>
+                    <li>Prevent duplicate reviews</li>
+                    <li>Validate payment method</li>
+                    <li>Set default loyalty points</li>
+                </ul>
+            </section>
+            
+            <section class="project-section">
+                <h2> Stored Procedures</h2>
+                <p>Did not add procedures but it's something I can work on in the future</p>
+            </section>
+            
+            <section class="project-section">
+                <h2>Files Included</h2>
+                <ul>
+                    <li><code>tables and attributes.sql</code> — Table and Views creation scripts</li>
+                    <li><code>Data.sql</code> — Data (≥100 rows)</li>
+                    <li><code>constraints and triggers.sql</code> — Triggers for automation and additional constraints</li>
+                    <li><code>BookManagement_Data.xlsx</code> — Data import file (if needed)</li>
+                    <li><code>Queries.sql</code> — SQL queries to run to test the database</li>
+                </ul>
+            </section>
+            
+            <section class="project-section">
+                <h2> How to Use</h2>
+                <ol class="steps">
+                    <li>Open SQL Server Management Studio</li>
+                    <li>Run <code>tables and attributes.sql</code> to create schema</li>
+                    <li>Import data using Excel or <code>data.sql</code></li>
+                    <li>Run <code>constraints and triggers.sql</code></li>
+                    <li>Query data or test procedures/views</li>
+                </ol>
+            </section>
+            
+            <section class="project-section">
+                <h2>Notes</h2>
+                <ul>
+                    <li>Make sure to enable foreign key checks and identity insert where needed</li>
+                    <li>Designed for academic purposes and extendable for production use</li>
+                </ul>
+            </section>
+        </div>
+
+    <footer>
+
+        <p><strong>Author:</strong> Sofiat Adeyemi, Alameen Adeku </p>
+
+        <div class="footer-container">
+            <button class="send-message-btn" onclick="openContactForm()">
+                <i class="fas fa-paper-plane"></i>
+                <span>Send a Message</span>
+             </button>
+
+              <div class="social-links">
+                <a href="https://github.com/sofiaade" class = "social-btn" target="_blank">
+                  <i class="fab fa-github"></i>
+                  <span> GitHub </span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/sofiat-adeyemi-9b7464219/" class = "social-btn"  target="_blank">
+                  <i class="fab fa-linkedin"></i>
+                  <span> LinkedIn </span>
+                </a>
+
+                <a href="mailto:sofiatadeyemi78@gmail.com" class = "social-btn" >
+                  <i class="fas fa-envelope"></i>
+                  <span> Email </span>
+                </a>
+              </div>
+
+            <div class="container">
+                <p>&copy; 2025 Sofia Adeyemi</p>
+            </div>
+        </div>
+    </footer>
+   
+   <!-- Contact Form Modal -->
+   <div class="modal-overlay" id="contactModal" onclick="closeModalOnOutsideClick(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2 class="modal-title">Get in Touch</h2>
+            <button class="close-btn" onclick="closeContactForm()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <form id="contactForm" action="https://formspree.io/f/mldadgae" method="POST">
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input 
+                    type="text" 
+                    class="form-input" 
+                    name="name"
+                    placeholder="Enter your name" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    class="form-input" 
+                    name="email"
+                    placeholder="Enter your email" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea 
+                    class="form-textarea" 
+                    name="message"
+                    placeholder="Write your message here" 
+                    required
+                ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+                <span>Send Message</span>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+
+            <div class="success-message" id="successMessage">
+                ✓ Message sent successfully!
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openContactForm() {
+        document.getElementById('contactModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeContactForm() {
+        document.getElementById('contactModal').classList.remove('active');
+        document.body.style.overflow = '';
+        document.getElementById('contactForm').reset();
+        document.getElementById('successMessage').classList.remove('show');
+    }
+
+    function closeModalOnOutsideClick(event) {
+        if (event.target.id === 'contactModal') {
+            closeContactForm();
+        }
+    }
+
+    // Handle form submission with Formspree
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Disable submit button
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>Sending...</span>';
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                // Show success message
+                successMessage.classList.add('show');
+                form.reset();
+                
+                // Close modal after 2 seconds
+                setTimeout(() => {
+                    closeContactForm();
+                }, 2000);
+            } else {
+                alert('Oops! There was a problem sending your message. Please try again.');
+            }
+        } catch (error) {
+            alert('Oops! There was a problem sending your message. Please try again.');
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeContactForm();
+        }
+    });
+</script>
+
+    <script>
+        // Star field animation
+        const canvas = document.getElementById('particlesCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        const starCount = 200;
+        
+        class Star {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.z = Math.random() * canvas.width;
+                this.radius = Math.random() * 1.5 + 0.5;
+                this.speed = Math.random() * 0.5 + 0.2;
+            }
+            
+            update() {
+                this.z -= this.speed;
+                if (this.z <= 0) {
+                    this.z = canvas.width;
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                }
+            }
+            
+            draw() {
+                const x = (this.x - canvas.width / 2) * (canvas.width / this.z);
+                const y = (this.y - canvas.height / 2) * (canvas.width / this.z);
+                const s = this.radius * (canvas.width / this.z);
+                
+                const screenX = x + canvas.width / 2;
+                const screenY = y + canvas.height / 2;
+                
+                if (screenX < 0 || screenX > canvas.width || screenY < 0 || screenY > canvas.height) {
+                    return;
+                }
+                
+                const opacity = 1 - this.z / canvas.width;
+                
+                ctx.beginPath();
+                ctx.arc(screenX, screenY, s, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+                ctx.fill();
+                
+                if (opacity > 0.7) {
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+        }
+        
+        for (let i = 0; i < starCount; i++) {
+            stars.push(new Star());
+        }
+        
+        function animate() {
+            ctx.fillStyle = 'rgba(30, 27, 75, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Dynamic greeting based on time
+        const greetings = ['Hello', 'Hi', 'Hey', 'Greetings', 'Welcome'];
+        const hour = new Date().getHours();
+        let greeting = 'Hello';
+        
+        if (hour < 12) greeting = 'Good morning';
+        else if (hour < 18) greeting = 'Good afternoon';
+        else greeting = 'Good evening';
+        
+        document.getElementById('hello-message').textContent = greeting;
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section, .homepage-container');
+            const navLinks = document.querySelectorAll('.nav-btn');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
