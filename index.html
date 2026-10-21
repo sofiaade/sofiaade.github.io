@@ -1,572 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sofia Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Sofiat Adeyemi</title>
+  <meta name="description" content="I am a senior CS & Math researcher at Southeastern Louisiana University studying small language model post-training, RLVR, and computer vision." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0D1B2A;
+      --navy-mid: #162033;
+      --navy-light: #1E2D42;
+      --lavender: #9B8EC4;
+      --lavender-light: #BEB3DE;
+      --warm: #C8B89A;
+      --white: #F0F4F8;
+      --white-dim: #B8C5D0;
+      --rule: rgba(155,142,196,0.2);
+      --font-serif: 'DM Serif Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+    body { background: var(--navy); color: var(--white); font-family: var(--font-sans); font-size: 16px; line-height: 1.7; min-height: 100vh; }
+    a { color: var(--lavender); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--lavender-light); }
+
+    /* ══ TOP NAV ══════════════════════════════════════════════ */
+    .topnav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,27,42,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 56px;
+      max-width: 100%;
+    }
+    .topnav-name {
+      font-family: var(--font-serif);
+      font-size: 1rem; color: var(--white); white-space: nowrap;
+    }
+    .topnav-links { display: flex; gap: 0.15rem; align-items: center; }
+    .topnav-links a {
+      font-size: 0.78rem; font-weight: 500; color: var(--white-dim);
+      padding: 0.4rem 0.7rem; border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .topnav-links a:hover, .topnav-links a.active { color: var(--white); border-bottom-color: var(--lavender); }
+    .topnav-cv {
+      font-size: 0.75rem; font-weight: 600; color: var(--navy);
+      background: var(--lavender); padding: 0.35rem 0.9rem;
+      margin-left: 0.5rem; transition: background 0.2s;
+    }
+    .topnav-cv:hover { background: var(--lavender-light); color: var(--navy); }
+    .nav-mobile-toggle { display: none; background: none; border: none; color: var(--white-dim); cursor: pointer; font-size: 1.2rem; padding: 0.4rem; }
+    .nav-mobile-menu { display: none; flex-direction: column; background: var(--navy-mid); border-bottom: 1px solid var(--rule); padding: 0.5rem 1.5rem 1rem; }
+    .nav-mobile-menu a { font-size: 0.85rem; color: var(--white-dim); padding: 0.5rem 0; border-bottom: 1px solid var(--rule); font-weight: 500; }
+    .nav-mobile-menu a:last-child { border-bottom: none; }
+    .nav-mobile-menu.open { display: flex; }
+
+    /* ══ PAGE WRAPPER ══════════════════════════════════════════ */
+    .page { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ══ HERO / ABOUT — two column ══════════════════════════════ */
+    #about { padding: 4rem 0 3.5rem; display: grid; grid-template-columns: 200px 1fr; gap: 3.5rem; align-items: start; }
+    .about-photo-col { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .about-photo { width: 180px; height: 220px; object-fit: cover; object-position: center top; filter: grayscale(10%); display: block; }
+    .about-icon-links { display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: center; }
+    .icon-link {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border: 1px solid var(--rule);
+      color: var(--white-dim); font-size: 0.75rem; font-weight: 700;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .icon-link:hover { border-color: var(--lavender); color: var(--lavender); }
+    .icon-link svg { width: 15px; height: 15px; fill: currentColor; }
+    .about-content {}
+    .about-name { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; color: var(--white); margin-bottom: 0.3rem; }
+    .about-name em { font-style: italic; color: var(--lavender); }
+    .about-tagline { font-size: 0.82rem; color: var(--lavender); font-weight: 500; margin-bottom: 0.2rem; letter-spacing: 0.02em; }
+    .about-inst { font-size: 0.78rem; color: var(--white-dim); margin-bottom: 1.5rem; }
+    .about-inst a { color: var(--white-dim); }
+    .about-inst a:hover { color: var(--lavender-light); }
+    .about-body p { font-size: 0.91rem; color: var(--white-dim); line-height: 1.82; margin-bottom: 0.95rem; }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-body strong { color: var(--white); font-weight: 500; }
+    .about-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .btn-primary { display: inline-block; background: var(--lavender); color: var(--navy); font-size: 0.78rem; font-weight: 600; padding: 0.55rem 1.3rem; transition: background 0.2s; }
+    .btn-primary:hover { background: var(--lavender-light); color: var(--navy); }
+    .btn-secondary { display: inline-block; border: 1px solid var(--rule); color: var(--white-dim); font-size: 0.78rem; font-weight: 500; padding: 0.55rem 1.3rem; transition: border-color 0.2s, color 0.2s; }
+    .btn-secondary:hover { border-color: var(--lavender); color: var(--white); }
+
+    /* ══ SECTION SHELL ═════════════════════════════════════════ */
+    .section { padding: 3.5rem 0; border-top: 1px solid var(--rule); scroll-margin-top: 64px; }
+    .section-label {
+      font-size: 0.67rem; font-weight: 600; color: var(--lavender);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 1.6rem; display: flex; align-items: center; gap: 0.75rem;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+    /* ══ NEWS ══════════════════════════════════════════════════ */
+    .news-list { display: flex; flex-direction: column; gap: 0; }
+    .news-item { display: grid; grid-template-columns: 80px 1fr; gap: 1.2rem; padding: 0.75rem 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+    .news-item:first-child { border-top: 1px solid var(--rule); }
+    .news-date { font-size: 0.72rem; color: var(--lavender); font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .news-text { font-size: 0.85rem; color: var(--white-dim); line-height: 1.65; }
+    .news-text strong { color: var(--white); font-weight: 500; }
+    .news-text a { color: var(--lavender); }
+
+    /* ══ PUBLICATIONS ═══════════════════════════════════════════ */
+    .pub-item { padding: 1.6rem 0; border-bottom: 1px solid var(--rule); }
+    .pub-item:first-of-type { border-top: 1px solid var(--rule); }
+    .pub-venue-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.45rem; }
+    .pub-venue { font-size: 0.68rem; font-weight: 600; color: var(--lavender); text-transform: uppercase; letter-spacing: 0.07em; }
+    .pub-title { font-family: var(--font-serif); font-size: 1.03rem; color: var(--white); line-height: 1.3; margin-bottom: 0.35rem; }
+    .pub-authors { font-size: 0.78rem; color: var(--white-dim); font-style: italic; margin-bottom: 0.35rem; }
+    .pub-authors strong { color: var(--lavender-light); font-style: normal; font-weight: 600; }
+    .pub-desc { font-size: 0.82rem; color: var(--white-dim); line-height: 1.72; max-width: 72ch; margin-bottom: 0.9rem; }
+    .pub-desc strong { color: var(--white); font-weight: 600; }
+    .pub-desc em { color: var(--warm); font-style: normal; }
+    .pub-links { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.9rem; }
+    .pub-link {
+      font-size: 0.71rem; font-weight: 600; color: var(--white-dim);
+      border: 1px solid var(--rule); padding: 0.2rem 0.6rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .pub-link:hover { border-color: var(--lavender); color: var(--lavender); }
+    .findings-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 1rem; }
+    .finding { background: var(--navy); padding: 0.9rem 1rem; }
+    .finding-val { font-family: var(--font-serif); font-size: 1.35rem; color: var(--lavender); line-height: 1.1; margin-bottom: 0.2rem; }
+    .finding-label { font-size: 0.67rem; color: var(--white-dim); line-height: 1.5; }
+
+    /* ══ EXPERIENCE ════════════════════════════════════════════ */
+    .exp-item { padding: 1.6rem 0; border-bottom: 1px solid var(--rule); }
+    .exp-item:first-of-type { border-top: 1px solid var(--rule); }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; margin-bottom: 0.8rem; flex-wrap: wrap; }
+    .exp-title { font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.18rem; }
+    .exp-org { font-size: 0.8rem; color: var(--lavender); font-weight: 500; }
+    .exp-meta { text-align: right; flex-shrink: 0; }
+    .exp-date { font-size: 0.76rem; color: var(--white-dim); font-weight: 500; margin-bottom: 0.12rem; }
+    .exp-advisor { font-size: 0.72rem; color: var(--white-dim); font-style: italic; }
+    .exp-desc { font-size: 0.83rem; color: var(--white-dim); line-height: 1.77; max-width: 70ch; margin-bottom: 0.85rem; }
+
+    /* ══ RESEARCH ══════════════════════════════════════════════ */
+    .research-item { padding: 2rem 0; border-bottom: 1px solid var(--rule); }
+    .research-item:first-of-type { border-top: 1px solid var(--rule); }
+    .research-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+    .research-venue-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .research-venue { font-size: 0.68rem; font-weight: 600; color: var(--lavender); text-transform: uppercase; letter-spacing: 0.07em; }
+    .research-title { font-family: var(--font-serif); font-size: 1.06rem; color: var(--white); line-height: 1.3; margin-bottom: 0.4rem; }
+    .research-authors { font-size: 0.77rem; color: var(--white-dim); font-style: italic; margin-bottom: 1rem; }
+    .research-body p { font-size: 0.83rem; color: var(--white-dim); line-height: 1.78; max-width: 72ch; margin-bottom: 0.75rem; }
+    .research-body strong { color: var(--white); font-weight: 600; }
+    .research-body em { color: var(--warm); font-style: normal; }
+    .project-link { font-size: 0.77rem; font-weight: 600; color: var(--lavender); white-space: nowrap; }
+
+    /* ══ TAGS ══════════════════════════════════════════════════ */
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .stack-tag { font-size: 0.67rem; color: var(--white-dim); border: 1px solid var(--rule); padding: 0.13rem 0.5rem; }
+    .tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.13rem 0.5rem; }
+    .tag-active { background: rgba(155,142,196,0.13); color: var(--lavender); }
+    .tag-warm { background: rgba(200,184,154,0.12); color: var(--warm); }
+    .tag-done { background: rgba(176,196,222,0.07); color: var(--white-dim); }
+
+    /* ══ PROJECTS ══════════════════════════════════════════════ */
+    .project { padding: 1.6rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: start; }
+    .project:first-of-type { border-top: 1px solid var(--rule); }
+    .project-meta { font-size: 0.71rem; color: var(--lavender); font-weight: 500; margin-bottom: 0.4rem; display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap; }
+    .project-title { font-family: var(--font-serif); font-size: 1.02rem; color: var(--white); margin-bottom: 0.5rem; line-height: 1.3; }
+    .project-desc { font-size: 0.83rem; color: var(--white-dim); line-height: 1.74; max-width: 65ch; margin-bottom: 0.8rem; }
+
+    /* ══ INTERESTS ═════════════════════════════════════════════ */
+    .interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+    .interest-item { background: var(--navy); padding: 1.3rem 1.5rem; }
+    .interest-title { font-size: 0.87rem; font-weight: 600; color: var(--white); margin-bottom: 0.35rem; }
+    .interest-desc { font-size: 0.78rem; color: var(--white-dim); line-height: 1.65; }
+    .interests-extended { margin-top: 1.4rem; }
+    .interests-extended-label { font-size: 0.7rem; font-weight: 600; color: var(--white-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.65rem; }
+    .interests-tags { display: flex; flex-wrap: wrap; gap: 0.42rem; }
+    .interest-tag { font-size: 0.74rem; color: var(--white-dim); border: 1px solid var(--rule); padding: 0.18rem 0.6rem; }
+    .interests-grid.three { grid-template-columns: repeat(3, 1fr); }
+    .interest-list { list-style: none; margin-top: 0.5rem; }
+    .interest-list li { font-size: 0.8rem; color: var(--white-dim); line-height: 1.6; padding: 0.3rem 0 0.3rem 0.9rem; position: relative; border-top: 1px solid var(--rule); }
+    .interest-list li:first-child { border-top: none; }
+    .interest-list li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 4px; height: 4px; background: var(--lavender); }
+
+    /* ══ SKILLS ════════════════════════════════════════════════ */
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .skill-group-title { font-size: 0.7rem; font-weight: 600; color: var(--lavender); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.85rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.38rem; }
+    .skill-list li { font-size: 0.8rem; color: var(--white-dim); display: flex; align-items: center; gap: 0.5rem; }
+    .skill-list li::before { content: ''; width: 4px; height: 4px; background: var(--lavender); flex-shrink: 0; }
+
+    /* ══ CONTACT ═══════════════════════════════════════════════ */
+    .contact-inner { max-width: 52ch; }
+    .contact-inner p { font-size: 0.91rem; color: var(--white-dim); margin-bottom: 2rem; line-height: 1.78; }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-list li { font-size: 0.83rem; color: var(--white-dim); display: flex; align-items: center; gap: 0.75rem; }
+    .contact-list a { color: var(--white); font-weight: 500; }
+    .contact-label { font-size: 0.67rem; font-weight: 600; color: var(--lavender); text-transform: uppercase; letter-spacing: 0.06em; width: 62px; flex-shrink: 0; }
+
+    /* ══ FOOTER ════════════════════════════════════════════════ */
+    footer { border-top: 1px solid var(--rule); padding: 2rem; max-width: 1080px; margin: 0 auto; font-size: 0.72rem; color: var(--white-dim); opacity: 0.45; }
+
+    /* ══ MOBILE ════════════════════════════════════════════════ */
+    @media (max-width: 760px) {
+      .topnav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+      #about { grid-template-columns: 1fr; padding: 2.5rem 0 2rem; }
+      .about-photo-col { flex-direction: row; justify-content: flex-start; align-items: flex-end; gap: 1.5rem; }
+      .about-photo { width: 100px; height: 125px; }
+      .interests-grid { grid-template-columns: 1fr; }
+      .interests-grid.three { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .findings-grid { grid-template-columns: 1fr 1fr; }
+      .project { grid-template-columns: 1fr; }
+      .exp-meta { text-align: left; }
+      .page { padding: 0 1.2rem; }
+    }
+    @media (max-width: 480px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .about-photo-col { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  </style>
 </head>
-
 <body>
-    <canvas class="particles-bg" id="particlesCanvas"></canvas>
-    
-    <header class="site-header">
-        <div class="header-content">
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-btn active">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-btn">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#skills" class="nav-btn">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="projects.html" class="nav-btn">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="blogs.html" class="nav-btn">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="theme-toggle" aria-label="Toggle theme">
-                            <i class="fas fa-moon"></i>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <main id="main-content">
-        <div class="container">
-            <div class="homepage-container" id="home">
-                <div class="header-image-section">
-                    <div class="profile-image-container">
-                        <!-- Replace with your image -->
-                        <img src="images/picture.jpeg" alt="Your Name - Computer Science Student" class="header-image profile-easter-egg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="hello-section">
-                    <h1 class="hello-text">
-                        <span id="hello-message">Hello</span>, I'm Sofia Adeyemi
-                    </h1>
-                </div>
-
-                <div class="about-section">
-                    <div class="intro-content">
-                        <p class="about-description highlight">
-                            I'm a Computer Science student passionate about AI and machine learning. Currently learning to build practical tools and systems using deep learning, reinforcement learning, natural language processing, and computer vision. 
-                        </p>
-                        <p class="about-description highlight">
-                            Research Interests: Reinforcement Learning and Robotics, Deep Learning, Natural Language Processing, Computer Vision.
-                         </p>
-                     </div>
-                        <p class="about-description">
-                            I'm eager to gain more hands-on experience in the tech industry and contribute to impactful projects. My resume is attached below.
-                        </p>
-                      
-                    </div>
-                    <div class="cta-section" center>
-                        <a href="Resume.pdf" class="resume-button" download="Sofia_Adeyemi_Resume.pdf">
-                            <i class="fas fa-download"></i>
-                            <span>Download Resume</span>
-                        </a>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <section class="skills-section" id="skills">
-                <div class="skills-header">
-                    <h2 class="skills-title">Skills & Technologies</h2>
-                    <p class="skills-subtitle">Technologies I work with</p>
-                </div>
-
-                <div class="skills-container">
-                    <div class="skill-tag" title="Core programming language">
-                        <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" class="skill-icon">
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Machine Learning</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Predictive Modeling</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>SQL</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas" class="skill-icon">
-                        <span>Pandas</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-learn" class="skill-icon">
-                        <span>Scikit-learn</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/numpy/013243" alt="NumPy" class="skill-icon">
-                        <span>NumPy</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/tensorflow/FF6F00" alt="TensorFlow" class="skill-icon">
-                        <span>TensorFlow</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/pytorch/EE4C2C" alt="PyTorch" class="skill-icon">
-                        <span>PyTorch</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Matplotlib</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Seaborn</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/googlecolab/F9AB00" alt="Google Colab" class="skill-icon">
-                        <span>Google Colab</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/kaggle/20BEFF" alt="Kaggle" class="skill-icon">
-                        <span>Kaggle</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/opencv/5C3EE8" alt="OpenCV" class="skill-icon">
-                        <span>OpenCV</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Neural Networks</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Support Vector Machines</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Decision Trees</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Random Forest</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Clustering</span>
-                    </div>
-                    
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt="JavaScript" class="skill-icon">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" class="skill-icon">
-                        <span>React</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/flask/000000" alt="Flask" class="skill-icon">
-                        <span>Flask</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/git/F05032" alt="Git" class="skill-icon">
-                        <span>Git</span>
-                    </div>
-                    <div class="skill-tag">
-                        <img src="https://cdn.simpleicons.org/jupyter/F37626" alt="Jupyter" class="skill-icon">
-                        <span>Jupyter</span>
-                    </div>
-                    <div class="skill-tag">
-                        <span>Data Visualization</span>
-                    </div>
-                </div>
-            </section>
-        
-             <div class="container">
-            <section class="projects-section" id="projects">
-                <div class="section-header">
-                    <h2 class="section-title"> Featured Projects</h2>
-                </div>
-
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/250x200" alt="StudentPerformance Project">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-date">Fall 2025</span>
-                                <span class="project-badge badge-featured">⭐ FEATURED</span>
-                                <span class="project-badge badge-project">PROJECT</span>
-                                <span class="project-badge badge-completed">IN PROGRESS</span>
-                            </div>
-                            <h3 class="project-title">Predicting Student Performance with Julia </h3>
-                            <p class="project-description">
-                                We built a predictive analytics web application using Python and Julia for the Backend and React and Typescript for the Frontend.
-                                The app will allow users to upload a CSV dataset, provide a choice of predictive models then train the selected model on the dataset, display evaluation metrics, and visualize the results with interactive plots, showing trends and predictions. 
-                                This project showcases Julia’s strength in both data science and web development by combining machine learning, visualization and an accessible web interface
-
-                            </p>
-                            <a href="projects/StudentPerformance.html" class="project-link">View Project →</a>
-                        </div>
-                    </div>
-
-                    <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/250x200" alt=" TrafficSignRecognition Project">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-date">Fall 2025</span>
-                                <span class="project-badge badge-featured">⭐ FEATURED</span>
-                                <span class="project-badge badge-project">PROJECT</span>
-                                <span class="project-badge badge-completed">IN PROGRESS </span>
-                            </div>
-                            <h3 class="project-title">Traffic Sign Recognition Using A Convutional Neural Network made from scratch </h3>
-                            <p class="project-description">
-                                The goal of this project is to develop a deep learning system that can automatically recognize and classify traffic signs from images using a Convolutional Neural Network (CNN) built from scratch. The system will take an image of a traffic sign as input and predict which of the 43 different traffic sign categories it belongs to (e.g., stop sign, speed limit signs, yield sign, priority road, etc.). </p>
-                            <a href="projects/TrafficSignRecognition.html" class="project-link">View Project →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/250x200" alt="Mood Classification Project">
-                        </div>
-                        <div class="project-content">
-                            <div class="project-meta">
-                                <span class="project-date">Spring 2025</span>
-                                <span class="project-badge badge-featured">⭐ FEATURED</span>
-                                <span class="project-badge badge-project">PROJECT</span>
-                                <span class="project-badge badge-completed">✓ COMPLETED</span>
-                            </div>
-                            <h3 class="project-title">Mood Classification with Machine Learning </h3>
-                            <p class="project-description">
-                                Using Python and related libraries like Scikit Learn, we developed machine-learning models using ANN, SVM, DT, and KNN to predict the class of object labels.
-                                The process involved data preprocessing, feature extraction, model training, and evaluation to determine the most effective classification approach
-                                 </p>
-                            <a href="projects/MoodClassification.html" class="project-link">View Project →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="text-align: center;">
-                    <a href="projects.html" class="see-more-btn"> See More Projects →</a>
-                </div>
-
-            </section>
-             </div>
-
-         <div class="container">
-            <section class="blog-section" id="blog">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Blog & Articles</h2>
-                    <p class="section-subtitle">Thoughts on AI, Deep Learning, machine learning, and technology</p>
-                </div>
-
-                <div class="blog-grid">
-                    <div class="blog-card">
-                        <div class="blog-image">📝</div>
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span class="blog-date"><i class="far fa-calendar"></i> TBA</span>
-                                <span class="blog-tag-inline"> TBA </span>
-                            </div>
-                            <h3 class="blog-title">No Featured Blog Posts yet</h3>
-                            <p class="blog-excerpt">
-                            Check back later for insightful articles on AI , deep learning and machine learning.   
-                            </p>
-                            <a href="#" class="blog-read-more">Read more →</a>
-                        </div>
-                    </div>
-
-            </section>
-         </div>
-
-
-        </div>
-    </main> 
-  
-    <footer>
-        <div class="footer-container">
-            <button class="send-message-btn" onclick="openContactForm()">
-                <i class="fas fa-paper-plane"></i>
-                <span>Send a Message</span>
-             </button>
-
-              <div class="social-links">
-                <a href="https://github.com/sofiaade" class = "social-btn" target="_blank">
-                  <i class="fab fa-github"></i>
-                  <span> GitHub </span>
-                </a>
-
-                <a href="https://www.linkedin.com/in/sofiat-adeyemi-9b7464219/" class = "social-btn"  target="_blank">
-                  <i class="fab fa-linkedin"></i>
-                  <span> LinkedIn </span>
-                </a>
-
-                <a href="mailto:sofiatadeyemi78@gmail.com" class = "social-btn" >
-                  <i class="fas fa-envelope"></i>
-                  <span> Email </span>
-                </a>
-              </div>
-
-            <div class="container">
-                <p>&copy; 2025 Sofia Adeyemi</p>
-            </div>
-        </div>
-    </footer>
-   
-   <!-- Contact Form Modal -->
-   <div class="modal-overlay" id="contactModal" onclick="closeModalOnOutsideClick(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <div class="modal-header">
-            <h2 class="modal-title">Get in Touch</h2>
-            <button class="close-btn" onclick="closeContactForm()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <form id="contactForm" action="https://formspree.io/f/mldadgae" method="POST">
-            <div class="form-group">
-                <label class="form-label">Name</label>
-                <input 
-                    type="text" 
-                    class="form-input" 
-                    name="name"
-                    placeholder="Enter your name" 
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Email</label>
-                <input 
-                    type="email" 
-                    class="form-input" 
-                    name="email"
-                    placeholder="Enter your email" 
-                    required
-                >
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Message</label>
-                <textarea 
-                    class="form-textarea" 
-                    name="message"
-                    placeholder="Write your message here" 
-                    required
-                ></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn" id="submitBtn">
-                <span>Send Message</span>
-                <i class="fas fa-paper-plane"></i>
-            </button>
-
-            <div class="success-message" id="successMessage">
-                ✓ Message sent successfully!
-            </div>
-        </form>
-    </div>
+<!-- ══ TOP NAV ══════════════════════════════════════════════════ -->
+<nav class="topnav" aria-label="Main navigation">
+  <div class="topnav-name">Sofiat Adeyemi</div>
+  <div class="topnav-links">
+    <a href="#about">About</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#research">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#interests">Interests</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a href="Resume.pdf" class="topnav-cv" target="_blank">CV</a>
+  </div>
+  <button class="nav-mobile-toggle" aria-label="Toggle menu" onclick="document.querySelector('.nav-mobile-menu').classList.toggle('open')">☰</button>
+</nav>
+<div class="nav-mobile-menu">
+  <a href="#about">About</a>
+  <a href="#news">News</a>
+  <a href="#publications">Publications</a>
+  <a href="#research">Research</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#interests">Interests</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+  <a href="Resume.pdf" target="_blank">CV ↗</a>
 </div>
 
+<div class="page">
+
+  <!-- ══ ABOUT ══════════════════════════════════════════════════ -->
+  <section id="about">
+    <div class="about-photo-col">
+      <img class="about-photo" src="https://sofiaade.github.io/images/picture.jpeg" alt="Sofiat Adeyemi" />
+      <div class="about-icon-links">
+        <!-- GitHub -->
+        <a class="icon-link" href="https://github.com/sofiaade" target="_blank" rel="noopener" title="GitHub">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a class="icon-link" href="https://www.linkedin.com/in/sofiat-adeyemi-9b7464219/" target="_blank" rel="noopener" title="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <!-- Google Scholar placeholder -->
+        <a class="icon-link" href="mailto:sofiatadeyemi78@gmail.com" title="Email">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+        </a>
+        <!-- MindSea Lab -->
+        <a class="icon-link" href="https://mindsealab.vercel.app" target="_blank" rel="noopener" title="MindSea Lab" style="font-size:0.55rem;font-weight:700;letter-spacing:-0.02em;">LAB</a>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <h1 class="about-name">Sofiat <em>Adeyemi</em></h1>
+      <div class="about-tagline">ML Researcher · PhD Applicant, Fall 2027</div>
+      <div class="about-inst">
+        <a href="https://mindsealab.vercel.app" target="_blank" rel="noopener">MindSea Lab</a> ·
+        <a href="https://www.southeastern.edu" target="_blank" rel="noopener">Southeastern Louisiana University</a> ·
+        Advisor: Dr. Kazim Sekeroglu
+      </div>
+
+      <div class="about-body">
+        <p>
+          I'm a senior at Southeastern Louisiana University, double majoring in <strong>Computer Science (Data Science)</strong> and <strong>Mathematics (Scientific Computing)</strong>, with an expected graduation and thesis defense in May 2027.
+        </p>
+        <p>
+          I conduct research at the <strong><a href="https://mindsealab.vercel.app" target="_blank" rel="noopener" style="color:var(--white);font-weight:500;">MindSea Lab</a></strong> under Dr. Kazim Sekeroglu. My thesis investigates post-training methods for small language models — specifically whether reinforcement learning from verifiable rewards (PPO, GRPO, DPO, RFT) improves math reasoning in GPT-2-class models, and how much cross-tokenizer distillation from a math-specialized teacher adds on top. Alongside this, I build spatiotemporal deep learning systems for biological vision, with a completed study on zebrafish behavioral classification presented at the ULS Academic Summit.
+        </p>
+        <p>
+          My thesis is organized as two companion papers: a systematic comparison of RL methods for math reasoning in GPT-2-class models, and a cross-tokenizer distillation method for transferring reasoning from a Qwen teacher to GPT-2 students. I'm also targeting a journal publication on the zebrafish study in 2026. I'm looking for PhD groups working on <strong>LM post-training, RLVR, reasoning, or efficient ML</strong>.
+        </p>
+      </div>
+
+      <div class="about-actions">
+        <a href="Resume.pdf" class="btn-primary" target="_blank">Download CV</a>
+        <a href="#research" class="btn-secondary">View Research →</a>
+        <a href="#publications" class="btn-secondary">Publications →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NEWS ═══════════════════════════════════════════════════ -->
+  <section id="news" class="section">
+    <div class="section-label">News</div>
+    <div class="news-list">
+
+      <div class="news-item">
+        <div class="news-date">Oct 2026</div>
+        <div class="news-text">Actively applying to PhD programs for <strong>Fall 2027</strong> — focused on LM post-training, RLVR, and reasoning systems.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">In prep</div>
+        <div class="news-text">Preparing two <strong>arXiv preprints</strong> from thesis work: <em>RLVR for Math Reasoning in GPT-2-Class Models</em> and <em>Cross-Tokenizer Distillation for Small-Scale Math Reasoning</em>.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">2026</div>
+        <div class="news-text">Targeting <strong>journal publication</strong> for zebrafish behavioral classification study — 93.19% CV accuracy, AUC 0.927, presented at ULS Academic Summit.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">Mar 2026</div>
+        <div class="news-text">Presented poster <strong>"Automated Zebrafish Behavioral Classification via Multi-Architecture Deep Feature Fusion"</strong> at the <em>ULS Academic Summit</em>. Advised by Dr. Omer Soysal.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">Fall 2025</div>
+        <div class="news-text">Joined <strong><a href="https://mindsealab.vercel.app" target="_blank" rel="noopener">MindSea Lab</a></strong> as an undergraduate researcher under Dr. Kazim Sekeroglu. Began thesis on post-training methods for small LMs.</div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">Fall 2025</div>
+        <div class="news-text">Completed all five training pipelines (SFT, RFT, PPO, GRPO, distillation) from scratch on Colab Pro with <strong>A100/H100 GPU access</strong> across four GPT-2 model scales.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ PUBLICATIONS ═══════════════════════════════════════════ -->
+  <section id="publications" class="section">
+    <div class="section-label">Publications</div>
+
+    <div class="pub-item">
+      <div class="pub-venue-row">
+        <span class="pub-venue">Conference Poster · ULS Academic Summit</span>
+        <span class="tag tag-warm">Targeting Journal 2026</span>
+      </div>
+      <div class="pub-title">Automated Zebrafish Behavioral Classification via Multi-Architecture Deep Feature Fusion</div>
+      <div class="pub-authors"><strong>Sofiat Adeyemi</strong>, Omer Soysal — Dept. of Computer Science, Southeastern Louisiana University · March 2026</div>
+      <p class="pub-desc">
+        A systematic comparison of three deep learning architectures — <strong>2D CNN</strong> (spatial), <strong>3D CNN</strong> (spatiotemporal), and a <strong>convolutional autoencoder</strong> (unsupervised) — for classifying zebrafish behavioral responses to pharmacological stimuli (anesthetic, stimulant, control) from fluorescence microscopy stacks. Key finding: <em>temporal motion patterns</em>, not static spatial features, encode pharmacological signal. Best model: 3D CNN + Logistic Regression, 93.19% CV accuracy, 68.18% test accuracy, AUC 0.927, 16% improvement over frame-level CNN. Saliency analysis confirmed biologically relevant attention (anterior region, yolk sac). Statistical validation: ANOVA p &lt; 0.05 (Bonferroni-corrected), Cohen's d &gt; 1.0.
+      </p>
+      <div class="findings-grid">
+        <div class="finding"><div class="finding-val">93.19%</div><div class="finding-label">CV accuracy (3D CNN + LR)</div></div>
+        <div class="finding"><div class="finding-val">68.18%</div><div class="finding-label">Held-out test accuracy</div></div>
+        <div class="finding"><div class="finding-val">0.927</div><div class="finding-label">AUC</div></div>
+        <div class="finding"><div class="finding-val">+16%</div><div class="finding-label">Over frame-level CNN</div></div>
+      </div>
+      <div class="pub-links">
+        <a href="#" class="pub-link">Poster PDF</a>
+        <a href="https://github.com/sofiaade/Zebrafish-CNN-Autoencoders" class="pub-link" target="_blank" rel="noopener">Code</a>
+      </div>
+      <div class="tag-row">
+        <span class="stack-tag">3D CNN</span><span class="stack-tag">Autoencoder</span><span class="stack-tag">Saliency Maps</span>
+        <span class="stack-tag">Computer Vision</span><span class="stack-tag">Neuroscience</span><span class="stack-tag">PyTorch</span>
+      </div>
+    </div>
+
+    <!-- Paper 1 (in preparation) -->
+    <div class="pub-item">
+      <div class="pub-venue-row">
+        <span class="pub-venue">arXiv Preprint</span>
+        <span class="tag tag-active">In Preparation</span>
+      </div>
+      <div class="pub-title">RLVR for Math Reasoning in GPT-2-Class Models</div>
+      <div class="pub-authors"><strong>Sofiat Adeyemi</strong>, Kazim Sekeroglu — MindSea Lab, Southeastern Louisiana University</div>
+      <p class="pub-desc">
+        Does reinforcement learning from verifiable rewards — a binary correct/incorrect signal on GSM8K — actually improve math reasoning in small models, and which method works best? Starting from <strong>SFT</strong> at four GPT-2 scales (124M, 355M, 774M, 1.5B), we apply <strong>PPO, GRPO, DPO, and RFT</strong>, then rerun RL from the stronger RFT checkpoint to test whether a better starting point changes the results. A <strong>Qwen2.5-Math-1.5B</strong> anchor separates <em>old architecture</em> from <em>small model</em> as an explanation for GPT-2's limits. Evaluated on GSM8K, SVAMP, and ASDiv with 3 seeds, significance testing, an error breakdown, and a compute-efficiency table. Prior work either uses much larger models or tests only one method; this study compares methods head to head and reports honestly whether RL helps at this scale.
+      </p>
+      <div class="pub-links">
+        <a href="#" class="pub-link" style="opacity:0.5;pointer-events:none;">arXiv (coming soon)</a>
+      </div>
+      <div class="tag-row">
+        <span class="stack-tag">RLVR</span><span class="stack-tag">GRPO</span><span class="stack-tag">PPO</span><span class="stack-tag">DPO</span>
+        <span class="stack-tag">GSM8K</span><span class="stack-tag">GPT-2</span><span class="stack-tag">Mathematical Reasoning</span>
+      </div>
+    </div>
+
+    <!-- Paper 2 (in preparation) -->
+    <div class="pub-item">
+      <div class="pub-venue-row">
+        <span class="pub-venue">arXiv Preprint</span>
+        <span class="tag tag-active">In Preparation</span>
+      </div>
+      <div class="pub-title">Cross-Tokenizer Distillation for Small-Scale Math Reasoning</div>
+      <div class="pub-authors"><strong>Sofiat Adeyemi</strong>, Kazim Sekeroglu — MindSea Lab, Southeastern Louisiana University</div>
+      <p class="pub-desc">
+        Qwen2.5-Math-7B has a ~152K-token vocabulary and GPT-2 has 50K, with almost no overlap, so teacher logits cannot simply be copied to the student. We compare four ways of handling this on 124M, 355M, and 774M students: <strong>GRPO alone</strong>; <strong>GRPO + text-level chain-of-thought</strong> (decode the teacher's reasoning and train with cross-entropy, sidestepping the mismatch); <strong>GRPO + logit distillation</strong> through a learned linear projection from the teacher vocabulary to the student vocabulary; and <strong>logit distillation from the text-level checkpoint</strong>. The vocabulary projection is the primary technical contribution — a general method for distilling across tokenizer families. This paper is the companion to the RL study: that one establishes what RL alone can do at this scale, and this one asks how much a math-specialized teacher adds on top.
+      </p>
+      <div class="pub-links">
+        <a href="#" class="pub-link" style="opacity:0.5;pointer-events:none;">arXiv (coming soon)</a>
+      </div>
+      <div class="tag-row">
+        <span class="stack-tag">Knowledge Distillation</span><span class="stack-tag">Cross-Tokenizer</span><span class="stack-tag">GRPO</span>
+        <span class="stack-tag">Qwen2.5-Math</span><span class="stack-tag">GPT-2</span><span class="stack-tag">Mathematical Reasoning</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ RESEARCH ═══════════════════════════════════════════════ -->
+  <section id="research" class="section">
+    <div class="section-label">Research</div>
+
+    <!-- Thesis -->
+    <div class="research-item">
+      <div class="research-header">
+        <div class="research-venue-row">
+          <span class="research-venue">Thesis · MindSea Lab</span>
+          <span class="tag tag-active">Active</span>
+        </div>
+      </div>
+      <div class="research-title">Making Small Language Models Reason Effectively Through Post-Training Methods</div>
+      <div class="research-authors">Sofiat Adeyemi · Thesis Advisor: Dr. Kazim Sekeroglu · MindSea Lab, Southeastern Louisiana University</div>
+      <div class="research-body">
+        <p>Large language models exhibit emergent mathematical reasoning, but whether post-training can induce this in <em>small</em> models remains poorly understood. The thesis is organized as two companion papers on GPT-2-class models, with all training pipelines implemented from scratch without high-level training wrappers.</p>
+        <p><strong>Paper 1 — RLVR for Math Reasoning in GPT-2-Class Models.</strong> Does RL from a binary correct/incorrect reward on GSM8K improve math reasoning in small models, and which method works best? After SFT at four GPT-2 scales (124M–1.5B), PPO, GRPO, DPO, and RFT are applied and compared, with a second experiment starting RL from the stronger RFT checkpoint. A Qwen2.5-Math-1.5B anchor separates the effect of an older architecture from the effect of small size. Evaluation covers GSM8K, SVAMP, and ASDiv with 3 seeds, significance testing, an error breakdown, and a compute-efficiency table.</p>
+        <p><strong>Paper 2 — Cross-Tokenizer Distillation for Small-Scale Math Reasoning.</strong> Qwen2.5-Math-7B (~152K tokens) and GPT-2 (50K) share almost no vocabulary, so logits cannot be copied directly. Four conditions are compared on 124M, 355M, and 774M students: GRPO alone, GRPO with text-level chain-of-thought, GRPO with logit distillation through a learned linear vocabulary projection, and logit distillation from the text-level checkpoint. The projection is the primary technical contribution, a general method for distilling across tokenizer families.</p>
+        <p>The two papers are intentionally linked: Paper 1 establishes what RL alone can do at this scale, and Paper 2 asks how much a math-specialized teacher can add on top.</p>
+      </div>
+      <div class="findings-grid" style="margin-top:1rem;">
+        <div class="finding"><div class="finding-val">4</div><div class="finding-label">RL methods compared (PPO, GRPO, DPO, RFT)</div></div>
+        <div class="finding"><div class="finding-val">4</div><div class="finding-label">GPT-2 scales tested (124M – 1.5B)</div></div>
+        <div class="finding"><div class="finding-val">3</div><div class="finding-label">Benchmarks (GSM8K, SVAMP, ASDiv)</div></div>
+        <div class="finding"><div class="finding-val">152K → 50K</div><div class="finding-label">Teacher-to-student vocabulary gap</div></div>
+      </div>
+      <div class="tag-row">
+        <span class="stack-tag">RLVR</span><span class="stack-tag">GRPO</span><span class="stack-tag">PPO</span><span class="stack-tag">DPO</span><span class="stack-tag">SFT</span>
+        <span class="stack-tag">Cross-Tokenizer Distillation</span><span class="stack-tag">GPT-2</span><span class="stack-tag">PyTorch</span><span class="stack-tag">A100 / H100</span>
+      </div>
+    </div>
+
+    <!-- Zebrafish -->
+    <div class="research-item">
+      <div class="research-header">
+        <div class="research-venue-row">
+          <span class="research-venue">Conference Poster · ULS Academic Summit, Mar 2026</span>
+          <span class="tag tag-warm">Targeting Publication 2026</span>
+        </div>
+        <a href="#" class="project-link">Poster PDF →</a>
+      </div>
+      <div class="research-title">Automated Zebrafish Behavioral Classification via Multi-Architecture Deep Feature Fusion</div>
+      <div class="research-authors">Sofiat Adeyemi · Advisor: Dr. Omer Soysal · Dept. of Computer Science, Southeastern Louisiana University</div>
+      <div class="research-body">
+        <p>Zebrafish are a key model organism in pharmacological neuroscience, but manual behavioral annotation is time-intensive and subjective. This work addresses automated classification across anesthetic, stimulant, and control conditions — a computer vision problem where <em>temporal motion patterns</em>, not static spatial features, encode the pharmacological signal.</p>
+        <p>Three architectures compared — 2D CNN, 3D CNN (16-frame), convolutional autoencoder — on ~1,200 frames from 30 TIFF stacks. Best model: <strong>3D CNN + Logistic Regression</strong>, 93.19% CV accuracy, 68.18% test accuracy, AUC 0.927, +16% over frame-level CNN. Saliency maps confirmed anatomically appropriate attention.</p>
+      </div>
+      <div class="tag-row">
+        <span class="stack-tag">3D CNN</span><span class="stack-tag">2D CNN</span><span class="stack-tag">Autoencoder</span>
+        <span class="stack-tag">Saliency Maps</span><span class="stack-tag">PyTorch</span><span class="stack-tag">Neuroscience</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ EXPERIENCE ═════════════════════════════════════════════ -->
+  <section id="experience" class="section">
+    <div class="section-label">Research Experience</div>
+
+    <div class="exp-item">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">Undergraduate Researcher</div>
+          <div class="exp-org"><a href="https://mindsealab.vercel.app" target="_blank" rel="noopener" style="color:var(--lavender);">MindSea Lab</a> · Southeastern Louisiana University</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-date">Fall 2025 — Present</div>
+          <div class="exp-advisor">Advisor: Dr. Kazim Sekeroglu</div>
+        </div>
+      </div>
+      <p class="exp-desc">Conducting undergraduate thesis research on post-training methods for small language models, organized as two papers on RL and cross-tokenizer distillation for math reasoning. Designed and implemented full training pipelines from scratch (SFT, RFT, PPO, GRPO with custom reward functions and format penalties, DPO, and cross-tokenizer distillation from Qwen2.5-Math-7B) without relying on high-level RL frameworks. Running experiments across four GPT-2 scales on Colab Pro with A100/H100 GPU access. Performed systematic failure mode analysis of RLVR at sub-500M scale. Simultaneously led a computer vision study on zebrafish behavioral classification — presented at the ULS Academic Summit, March 2026.</p>
+      <div class="tag-row">
+        <span class="stack-tag">LM Post-Training</span><span class="stack-tag">RLVR / GRPO / PPO</span>
+        <span class="stack-tag">Cross-Tokenizer Distillation</span><span class="stack-tag">3D CNN</span>
+        <span class="stack-tag">PyTorch</span><span class="stack-tag">A100 / H100</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══ PROJECTS ═══════════════════════════════════════════════ -->
+  <section id="projects" class="section">
+    <div class="section-label">Projects
+      <span style="font-size:0.63rem;color:var(--white-dim);text-transform:none;letter-spacing:0;font-weight:400;margin-left:0.4rem;">live from <a href="https://github.com/sofiaade" target="_blank" rel="noopener" style="color:var(--lavender);">GitHub</a></span>
+    </div>
+    <div id="projects-container">
+      <div id="projects-loading" style="font-size:0.83rem;color:var(--white-dim);padding:1.5rem 0;">Loading repositories…</div>
+    </div>
+  </section>
+
+  <!-- ══ INTERESTS ══════════════════════════════════════════════ -->
+  <section id="interests" class="section">
+    <div class="section-label">Research Interests</div>
+    <div class="interests-extended" style="margin-top:0;margin-bottom:1.4rem;">
+      <div class="interests-extended-label">Broad Areas</div>
+      <div class="interests-tags">
+        <span class="interest-tag">Artificial intelligence</span>
+        <span class="interest-tag">Machine learning</span>
+        <span class="interest-tag">Natural language processing</span>
+        <span class="interest-tag">Computer vision</span>
+      </div>
+    </div>
+    <div class="interests-grid three">
+      <div class="interest-item">
+        <div class="interest-title">Focus: LLM Reasoning &amp; Alignment</div>
+        <ul class="interest-list">
+          <li>Understanding how LLMs work (interpretability and analysis)</li>
+          <li>Large language models: learning, inference, and evaluation algorithms</li>
+          <li>AI for mathematics and code</li>
+        </ul>
+      </div>
+      <div class="interest-item">
+        <div class="interest-title">NLP Focus</div>
+        <ul class="interest-list">
+          <li>Language models and pre-training</li>
+          <li>Information extraction and knowledge</li>
+          <li>Multilingual NLP</li>
+        </ul>
+      </div>
+      <div class="interest-item">
+        <div class="interest-title">Computer Vision Focus</div>
+        <ul class="interest-list">
+          <li>Object detection and recognition</li>
+          <li>Image segmentation</li>
+          <li>3D computer vision</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SKILLS ═════════════════════════════════════════════════ -->
+  <section id="skills" class="section">
+    <div class="section-label">Skills & Tools</div>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-title">ML Research</div>
+        <ul class="skill-list">
+          <li>LM Post-Training (SFT, RFT, PPO, GRPO)</li>
+          <li>Knowledge Distillation</li>
+          <li>Reward Function Design</li>
+          <li>Spatiotemporal Deep Learning</li>
+          <li>Computer Vision (2D / 3D CNN)</li>
+          <li>Saliency Map Analysis</li>
+          <li>Statistical Validation (ANOVA)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="skill-group-title">Frameworks & Libraries</div>
+        <ul class="skill-list">
+          <li>PyTorch</li>
+          <li>Hugging Face Transformers</li>
+          <li>TensorFlow / Keras</li>
+          <li>Scikit-learn</li>
+          <li>Pandas / NumPy</li>
+          <li>OpenCV</li>
+          <li>Matplotlib / Seaborn</li>
+        </ul>
+      </div>
+      <div>
+        <div class="skill-group-title">Languages & Dev</div>
+        <ul class="skill-list">
+          <li>Python</li>
+          <li>Julia</li>
+          <li>JavaScript / TypeScript</li>
+          <li>SQL</li>
+          <li>React / Flask</li>
+          <li>Git / Jupyter</li>
+          <li>Colab Pro (A100 / H100)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ════════════════════════════════════════════════ -->
+  <section id="contact" class="section">
+    <div class="section-label">Contact</div>
+    <div class="contact-inner">
+      <p>I'm applying to PhD programs for Fall 2027. I'm looking for groups working on LM post-training, RLVR, reasoning systems, or efficient ML — especially advisors who value building from first principles and careful empirical methodology. If our work overlaps, I'd be glad to connect.</p>
+      <ul class="contact-list">
+        <li><span class="contact-label">Email</span><a href="mailto:sofiatadeyemi78@gmail.com">sofiatadeyemi78@gmail.com</a></li>
+        <li><span class="contact-label">GitHub</span><a href="https://github.com/sofiaade" target="_blank" rel="noopener">github.com/sofiaade</a></li>
+        <li><span class="contact-label">LinkedIn</span><a href="https://www.linkedin.com/in/sofiat-adeyemi-9b7464219/" target="_blank" rel="noopener">Sofiat Adeyemi</a></li>
+        <li><span class="contact-label">Lab</span><a href="https://mindsealab.vercel.app" target="_blank" rel="noopener">MindSea Lab</a></li>
+      </ul>
+    </div>
+  </section>
+
+</div><!-- /page -->
+
+<footer>© 2026 Sofiat Adeyemi — PhD Applicant, Fall 2027 · sofiaade.github.io · MindSea Lab, SLU</footer>
+
 <script>
-    function openContactForm() {
-        document.getElementById('contactModal').classList.add('active');
-        document.body.style.overflow = 'hidden';
+  // ── GitHub Projects ──────────────────────────────────────────
+  const GITHUB_USER = 'sofiaade';
+  const PINNED = [
+    'Zebrafish-CNN-Autoencoders',
+    'Traffic_Sign_Recognition_Using_Custom_CNN',
+    'Predicting_Student_Performance_With_Julia',
+    'Fraud_Detetction_Using_Unsupervised_Learning',
+    'cmpsML_codefiends',
+    'CMPS_439_SQL_PROJECT',
+  ];
+  const DISPLAY_NAMES = {
+    'Zebrafish-CNN-Autoencoders': 'Zebrafish Behavioral Classification — Multi-Architecture Deep Feature Fusion',
+    'Traffic_Sign_Recognition_Using_Custom_CNN': 'Traffic Sign Recognition — CNN Designed from Scratch',
+    'Predicting_Student_Performance_With_Julia': 'Student Performance Prediction — Hybrid Python/Julia ML App',
+    'Fraud_Detetction_Using_Unsupervised_Learning': 'Fraud Detection — Unsupervised Learning',
+    'cmpsML_codefiends': 'Mood Classification — Comparative Study of ML Classifiers',
+    'CMPS_439_SQL_PROJECT': 'Database Systems — SQL Project',
+  };
+  const LANG_COLORS = {
+    Python:'#3572A5','Jupyter Notebook':'#DA5B0B',TypeScript:'#3178c6',
+    JavaScript:'#f1e05a',Julia:'#a270ba',TSQL:'#e38c00',R:'#198CE7',
+  };
+  function langDot(lang){const c=LANG_COLORS[lang]||'#8b8b8b';return`<span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:${c};margin-right:4px;vertical-align:middle;flex-shrink:0;"></span>`;}
+  function fmtName(n){return DISPLAY_NAMES[n]||n.replace(/_/g,' ').replace(/-/g,' ');}
+
+  async function loadProjects(){
+    const container=document.getElementById('projects-container');
+    const loading=document.getElementById('projects-loading');
+    try{
+      const res=await fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
+      if(!res.ok)throw new Error('API error');
+      const repos=await res.json();
+      const pinned=PINNED.map(n=>repos.find(r=>r.name===n)).filter(Boolean);
+      if(!pinned.length){loading.textContent='No repositories found.';return;}
+      loading.remove();
+      pinned.forEach(repo=>{
+        const isResearch=['Zebrafish-CNN-Autoencoders'].includes(repo.name);
+        const div=document.createElement('div');
+        div.className='project';
+        div.innerHTML=`
+          <div>
+            <div class="project-meta">
+              ${repo.language?`${langDot(repo.language)}<span style="color:var(--white-dim);font-size:0.74rem;">${repo.language}</span>`:''}
+              ${repo.stargazers_count>0?`<span style="color:var(--white-dim);font-size:0.71rem;">★ ${repo.stargazers_count}</span>`:''}
+              ${isResearch?`<span class="tag tag-active">Research</span>`:''}
+              <span style="color:var(--white-dim);font-size:0.71rem;margin-left:auto;">Updated ${new Date(repo.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'})}</span>
+            </div>
+            <div class="project-title">${fmtName(repo.name)}</div>
+            <p class="project-desc">${repo.description||'<em style="opacity:0.45">No description yet — add one on GitHub and it will appear here automatically.</em>'}</p>
+            <div class="tag-row">${repo.topics&&repo.topics.length?repo.topics.map(t=>`<span class="stack-tag">${t}</span>`).join(''): ''}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;align-items:flex-end;flex-shrink:0;">
+            <a href="${repo.html_url}" class="project-link" target="_blank" rel="noopener">GitHub →</a>
+            ${repo.homepage?`<a href="${repo.homepage}" class="project-link" target="_blank" rel="noopener" style="font-size:0.71rem;opacity:0.75;">Live →</a>`:''}
+          </div>`;
+        container.appendChild(div);
+      });
+    }catch(err){
+      if(loading)loading.textContent='Could not load repositories — visit GitHub directly.';
+      console.error(err);
     }
+  }
+  loadProjects();
 
-    function closeContactForm() {
-        document.getElementById('contactModal').classList.remove('active');
-        document.body.style.overflow = '';
-        document.getElementById('contactForm').reset();
-        document.getElementById('successMessage').classList.remove('show');
-    }
-
-    function closeModalOnOutsideClick(event) {
-        if (event.target.id === 'contactModal') {
-            closeContactForm();
-        }
-    }
-
-    // Handle form submission with Formspree
-    const form = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const successMessage = document.getElementById('successMessage');
-
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        // Disable submit button
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Sending...</span>';
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                // Show success message
-                successMessage.classList.add('show');
-                form.reset();
-                
-                // Close modal after 2 seconds
-                setTimeout(() => {
-                    closeContactForm();
-                }, 2000);
-            } else {
-                alert('Oops! There was a problem sending your message. Please try again.');
-            }
-        } catch (error) {
-            alert('Oops! There was a problem sending your message. Please try again.');
-        } finally {
-            // Re-enable submit button
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span>Send Message</span><i class="fas fa-paper-plane"></i>';
-        }
+  // ── Active nav highlight ─────────────────────────────────────
+  const allSections = document.querySelectorAll('section[id]');
+  const topLinks = document.querySelectorAll('.topnav-links a:not(.topnav-cv)');
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const id=e.target.id;
+        topLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+id));
+      }
     });
+  },{threshold:0.25,rootMargin:'-56px 0px 0px 0px'});
+  allSections.forEach(s=>io.observe(s));
 
-    // Close modal with Escape key
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            closeContactForm();
-        }
-    });
+  // ── Mobile menu close on link click ─────────────────────────
+  document.querySelectorAll('.nav-mobile-menu a').forEach(a=>{
+    a.addEventListener('click',()=>document.querySelector('.nav-mobile-menu').classList.remove('open'));
+  });
 </script>
-
-    <script>
-        // Star field animation
-        const canvas = document.getElementById('particlesCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const stars = [];
-        const starCount = 200;
-        
-        class Star {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.z = Math.random() * canvas.width;
-                this.radius = Math.random() * 1.5 + 0.5;
-                this.speed = Math.random() * 0.5 + 0.2;
-            }
-            
-            update() {
-                this.z -= this.speed;
-                if (this.z <= 0) {
-                    this.z = canvas.width;
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                }
-            }
-            
-            draw() {
-                const x = (this.x - canvas.width / 2) * (canvas.width / this.z);
-                const y = (this.y - canvas.height / 2) * (canvas.width / this.z);
-                const s = this.radius * (canvas.width / this.z);
-                
-                const screenX = x + canvas.width / 2;
-                const screenY = y + canvas.height / 2;
-                
-                if (screenX < 0 || screenX > canvas.width || screenY < 0 || screenY > canvas.height) {
-                    return;
-                }
-                
-                const opacity = 1 - this.z / canvas.width;
-                
-                ctx.beginPath();
-                ctx.arc(screenX, screenY, s, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-                ctx.fill();
-                
-                if (opacity > 0.7) {
-                    ctx.shadowBlur = 10;
-                    ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-                }
-            }
-        }
-        
-        for (let i = 0; i < starCount; i++) {
-            stars.push(new Star());
-        }
-        
-        function animate() {
-            ctx.fillStyle = 'rgba(30, 27, 75, 0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-            
-            requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        // Dynamic greeting based on time
-        const greetings = ['Hello', 'Hi', 'Hey', 'Greetings', 'Welcome'];
-        const hour = new Date().getHours();
-        let greeting = 'Hello';
-        
-        if (hour < 12) greeting = 'Good morning';
-        else if (hour < 18) greeting = 'Good afternoon';
-        else greeting = 'Good evening';
-        
-        document.getElementById('hello-message').textContent = greeting;
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section, .homepage-container');
-            const navLinks = document.querySelectorAll('.nav-btn');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-
-    </script>
 </body>
 </html>
